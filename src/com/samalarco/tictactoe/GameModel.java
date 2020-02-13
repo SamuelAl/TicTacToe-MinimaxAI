@@ -125,6 +125,11 @@ public class GameModel {
 		return false;
 	}
 	
+	public boolean isMoveLeft()
+	{
+		return isMoveLeft(boardArray);
+	}
+	
 	private BoardMove findBestMove(int player)
 	{
 		BoardMove bestMove = new BoardMove(-1, -1);
@@ -145,7 +150,7 @@ public class GameModel {
 					int[][] newBoard = copyBoard(boardArray);
 					newBoard[i][j] = maximizingPlayer;
 					int moveScore = minimax(newBoard, depth+1, false);
-					System.out.println("Try Move: " + i + "-" + j + " score:" + score);
+					System.out.println("Try Move: " + i + "-" + j + " score:" + moveScore);
 					if (moveScore > score)
 					{
 						score = moveScore;

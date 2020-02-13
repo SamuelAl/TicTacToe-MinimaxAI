@@ -43,8 +43,13 @@ public class GameController {
 				System.out.println("Player " + player + " wins" );
 				gameStatus = STATUS_GAME_END;
 			}
+			else if(!model.isMoveLeft())
+			{
+				System.out.println("Draw");
+				gameStatus = STATUS_GAME_END;
+			}
 			playerTurn = !playerTurn;
-			if (!playerTurn)
+			if (!playerTurn && gameStatus == STATUS_PLAYING)
 			{
 				model.aiMove(computerMark);
 			}
