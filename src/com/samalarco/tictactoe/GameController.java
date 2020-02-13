@@ -34,8 +34,9 @@ public class GameController {
 		if (gameStatus == STATUS_PLAYING)
 		{
 			int player = playerTurn ? playerMark : computerMark;
+			System.out.println("Player: " + (playerTurn ? "Player" : "Computer"));
 			view.updateTile(row, column,  player);
-			model.updateBoard(row, column, (player));
+			model.updateBoard(row, column, player);
 			
 			if(model.checkWin(player))
 			{
@@ -43,6 +44,10 @@ public class GameController {
 				gameStatus = STATUS_GAME_END;
 			}
 			playerTurn = !playerTurn;
+			if (!playerTurn)
+			{
+				model.aiMove(computerMark);
+			}
 		}
 		
 	}
